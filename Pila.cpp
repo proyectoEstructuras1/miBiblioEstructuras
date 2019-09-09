@@ -15,6 +15,9 @@ int Pila::pop(void){
     top = aux;
     return d;
 }
+int Pila::dameTop(void){
+    return top->dameDato();
+}
 void Pila::push(void){
     int d;
     cout<<"Dame d ";cin>>d;

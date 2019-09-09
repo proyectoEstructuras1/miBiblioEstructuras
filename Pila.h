@@ -13,6 +13,7 @@ public:
     ~Pila(void);
     void push(int d);
     int pop(void);
+    int dameTop(void);
     void push(void);
     bool estaVacia(void);
     void vaciaPila(void);

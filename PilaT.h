@@ -15,6 +15,7 @@ public:
     ~PilaT(void);
     void push(T d);
     T pop(void);
+    T dameTop(void)
     void push(void);
     bool estaVacia(void);
     void vaciaPilaT(void);
@@ -36,6 +37,10 @@ T PilaT<T>::pop(void){
     delete top;
     top = aux;
     return d;
+}
+template<typename T>
+T Pila<T>::dameTop(void){
+    return top->dameDato();
 }
 template<typename T>
 void PilaT<T>::push(void){

@@ -16,6 +16,8 @@ public:
     ~ColaT(void);
     void push(T d);
     T pop(void);
+    T dameIni(void);
+    T dameFin(void);
     bool estaVacia(void);
     void vaciaColaT(void);
 };
@@ -33,6 +35,14 @@ void ColaT<T>::push(T d){
 }
 template<typename T>
 T ColaT<T>::pop(void){
+}
+template<typename T>
+T ColaT<T>::dameIni(void){
+    return ini->dameDato();
+}
+template<typename T>
+T ColaT<T>::dameFin(void){
+    return fin->dameDato();
 }
 template<typename T>
 bool ColaT<T>::estaVacia(void){

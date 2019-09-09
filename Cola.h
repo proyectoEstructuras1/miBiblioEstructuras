@@ -14,6 +14,8 @@ public:
     ~Cola(void);
     void push(int d);
     int pop(void);
+    int dameIni(void);
+    int dameFin(void);
     bool estaVacia(void);
     void vaciaCola(void);
 };

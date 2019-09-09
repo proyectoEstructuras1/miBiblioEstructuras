@@ -11,6 +11,12 @@ void Cola::push(int d){
 }
 int Cola::pop(void){
 }
+int Cola::dameIni(void){
+    return ini->dameDato();
+}
+int Cola::dameFin(void){
+    return fin->dameDato();
+}
 bool Cola::estaVacia(void){
     return (ini == NULL && fin == ini);
 }
