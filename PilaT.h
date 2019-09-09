@@ -15,7 +15,7 @@ public:
     ~PilaT(void);
     void push(T d);
     T pop(void);
-    T dameTop(void)
+    T dameTop(void);
     void push(void);
     bool estaVacia(void);
     void vaciaPilaT(void);
