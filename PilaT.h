@@ -39,7 +39,7 @@ T PilaT<T>::pop(void){
     return d;
 }
 template<typename T>
-T Pila<T>::dameTop(void){
+T PilaT<T>::dameTop(void){
     return top->dameDato();
 }
 template<typename T>
