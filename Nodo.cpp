@@ -15,6 +15,11 @@ void Nodo::muestraDatos(void){
     else
         cout<< " -> " << sig << "| ";
 }
+void Nodo::muestraDato(void){
+    cout << "|" << dato << "|";
+    if(sig != NULL)
+        cout<< " -> ";
+}
 void Nodo::pideDatos(void){
     cout<<"Dame mi dato: ";cin>>dato;
 }

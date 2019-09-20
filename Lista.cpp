@@ -16,7 +16,6 @@ void Lista::eliminaLista(void){
 }
 void Lista::insertaNodo(int d){
     Nodo* aux=ini;
-    Nodo* aux2;
     if(estaVacia())
         ini = new Nodo(d,ini);
     else if(d <= ini->dameDato())
@@ -28,12 +27,20 @@ void Lista::insertaNodo(int d){
         aux->modificaSig(new Nodo(d,NULL));
     }
     else{
-        //aqui va tu tarea =P
+        Nodo* aux2;
+        aux2 = aux->dameSig();
+        while(d > aux2->dameDato()){
+            aux = aux->dameSig();
+            aux2 = aux2->dameSig();
+        }
+        aux->modificaSig(
+            new Nodo(d,aux2)
+        );
     }
 }
 int Lista::eliminaNodo(void){
     //Esta incompleto
-	
+
     Nodo* aux;
     int d;
     aux = ini->dameSig();
@@ -42,10 +49,19 @@ int Lista::eliminaNodo(void){
     ini = aux;
     return d;
 }
+bool Lista::buscaNodo(int d){
+    Nodo* aux = ini;
+    while(aux!=NULL){
+        if(d == aux->dameDato())
+            return true;
+        aux = aux->dameSig();
+    }
+    return false;
+}
 void Lista::muestraLista(void){
     Nodo* aux = ini;
     while(aux!=NULL){
-        aux->muestraDatos();
+        aux->muestraDato();
         aux = aux->dameSig();
     }
 }
@@ -63,32 +79,3 @@ int Lista::dameDatoFin(void){
     }
     return aux->dameDato();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

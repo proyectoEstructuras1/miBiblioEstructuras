@@ -12,6 +12,7 @@ public:
     Nodo(void);
     Nodo(int d, Nodo* s);
     void muestraDatos(void);
+    void muestraDato(void);
     void pideDatos(void);
     int dameDato(void);
     void modificaDato(int d);
