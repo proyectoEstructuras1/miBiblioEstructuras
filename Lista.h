@@ -14,7 +14,9 @@ public:
     void eliminaLista(void);
     bool estaVacia(void);
     void insertaNodo(int d);
-    int eliminaNodo(void);
+    bool eliminaNodo(int d);
+    int eliminaPrimero(void);
+    int eliminaUltimo(void);
     bool buscaNodo(int d);
     void muestraLista(void);
     int dameDatoIni(void);

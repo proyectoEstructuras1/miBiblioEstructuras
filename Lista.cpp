@@ -11,7 +11,7 @@ bool Lista::estaVacia(void){
 }
 void Lista::eliminaLista(void){
     while(!estaVacia()){
-        cout<<eliminaNodo()<<endl;
+        cout<<eliminaPrimero()<<endl;
     }
 }
 void Lista::insertaNodo(int d){
@@ -38,15 +38,62 @@ void Lista::insertaNodo(int d){
         );
     }
 }
-int Lista::eliminaNodo(void){
-    //Esta incompleto
-
+bool Lista::eliminaNodo(int d){
+    if(estaVacia())
+        return false;
+    else if(d == ini->dameDato()){
+        eliminaPrimero();
+        return true;
+    }
+    else{
+        Nodo* aux=ini, *aux2=ini->dameSig();
+        while(aux2!=NULL && d != aux2->dameDato()){
+            aux = aux->dameSig();
+            aux2 = aux2->dameSig();
+        }
+        if(aux2==NULL)
+            return false;
+        else{
+            aux->modificaSig(aux2->dameSig());
+            delete aux2;
+            return true;
+        }
+    }
+}
+int Lista::eliminaPrimero(void){
     Nodo* aux;
     int d;
+    if(estaVacia()){
+        cout<<"Lista vacia... =("<<endl;
+        exit(-3);
+    }
     aux = ini->dameSig();
     d = ini->dameDato();
     delete ini;
     ini = aux;
+    return d;
+}
+int Lista::eliminaUltimo(void){
+    int d;
+    if(estaVacia()){
+        cout<<"Lista vacia... =("<<endl;
+        exit(-4);
+    }
+    else if(ini->dameSig()==NULL){
+        d = ini->dameDato();
+        delete ini;
+        ini = NULL;
+    }
+    else {
+        Nodo*aux=ini, *aux2=ini->dameSig();
+        while(aux2->dameSig() != NULL){
+            aux = aux->dameSig();
+            aux2 = aux2->dameSig();
+        }
+        d = aux2->dameDato();
+        delete aux2;
+        aux->modificaSig(NULL);
+    }
     return d;
 }
 bool Lista::buscaNodo(int d){
@@ -66,13 +113,17 @@ void Lista::muestraLista(void){
     }
 }
 int Lista::dameDatoIni(void){
+    if(estaVacia()){
+        cout<<"Lista vacia... =("<<endl;
+        exit(-1);
+    }
     return ini->dameDato();
 }
 int Lista::dameDatoFin(void){
     Nodo* aux = ini;
     if(estaVacia()){
         cout<<"Lista vacia... =("<<endl;
-        exit(-1);
+        exit(-2);
     }
     while(aux->dameSig() != NULL){
         aux = aux->dameSig();
