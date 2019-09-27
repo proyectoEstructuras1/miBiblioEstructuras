@@ -21,6 +21,8 @@ public:
     void muestraLista(void);
     int dameDatoIni(void);
     int dameDatoFin(void);
+    void invierteNodos(int n1, int n2);
+    void generaLista(int n);
 };
 
 #endif // LISTA_H

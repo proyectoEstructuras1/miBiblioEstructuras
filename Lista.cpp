@@ -130,3 +130,40 @@ int Lista::dameDatoFin(void){
     }
     return aux->dameDato();
 }
+void Lista::invierteNodos(int n1, int n2){
+    Nodo* a1,*a2;
+    Nodo* a3,*a4;
+    Nodo* intermedio;
+
+    if(estaVacia()){
+        cout<<"Lista vacia!\n"<<endl;
+    }
+    else if(buscaNodo(n1)&&buscaNodo(n2)){
+        if(n1!=ini->dameDato()&&n2!=ini->dameDato()){
+            a1=ini;
+            a2=ini->dameSig();
+            while(n1 != a2->dameDato()){
+                a1=a1->dameSig();
+                a2=a2->dameSig();
+            }
+            a3=ini;
+            a4=ini->dameSig();
+            while(n2 != a4->dameDato()){
+                a3=a3->dameSig();
+                a4=a4->dameSig();
+            }
+            a1->modificaSig(a4);
+            a3->modificaSig(a2);
+            intermedio = a2->dameSig();
+            a2->modificaSig(a4->dameSig());
+            a4->modificaSig(intermedio);
+        }
+    }
+    else{
+        cout<<"No'stan! =P"<<endl;
+    }
+}
+void Lista::generaLista(int n){
+    //Aqui va tu tarea
+    Lista LG;
+}
