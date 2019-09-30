@@ -12,6 +12,7 @@ bool Lista::estaVacia(void){
 void Lista::eliminaLista(void){
     while(!estaVacia()){
         cout<<eliminaPrimero()<<endl;
+        //eliminaPrimero();
     }
 }
 void Lista::insertaNodo(int d){
@@ -163,7 +164,26 @@ void Lista::invierteNodos(int n1, int n2){
         cout<<"No'stan! =P"<<endl;
     }
 }
-void Lista::generaLista(int n){
-    //Aqui va tu tarea
-    Lista LG;
+void Lista::copiaEnListaMayoresQue(Lista& Lcopia, int n){
+    Nodo* aux=ini;
+    while(aux!=NULL){
+        if(aux->dameDato()>=n)
+            Lcopia.insertaNodo(aux->dameDato());
+        aux = aux->dameSig();
+    }
 }
+void Lista::fusiona(Lista& A, Lista& B){
+    Nodo* aux;
+
+    aux = A.ini;
+    while(aux!=NULL){
+        insertaNodo(aux->dameDato());
+        aux = aux->dameSig();
+    }
+    aux = B.ini;
+    while(aux!=NULL){
+        insertaNodo(aux->dameDato());
+        aux = aux->dameSig();
+    }
+}
+

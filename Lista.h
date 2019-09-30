@@ -22,22 +22,9 @@ public:
     int dameDatoIni(void);
     int dameDatoFin(void);
     void invierteNodos(int n1, int n2);
-    void generaLista(int n);
+    void copiaEnListaMayoresQue(Lista& Lcopia, int n);
+    void fusiona(Lista& A, Lista& B);
 };
 
 #endif // LISTA_H
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
