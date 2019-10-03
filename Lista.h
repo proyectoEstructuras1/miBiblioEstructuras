@@ -21,7 +21,8 @@ public:
     void muestraLista(void);
     int dameDatoIni(void);
     int dameDatoFin(void);
-    void invierteNodos(int n1, int n2);
+    bool invierteNodos(int n1, int n2);
+    bool invierteAlPrimero(int n2);
     void copiaEnListaMayoresQue(Lista& Lcopia, int n);
     void fusiona(Lista& A, Lista& B);
 };
