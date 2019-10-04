@@ -13,6 +13,7 @@ private:
 public:
     NodoT(void);
     NodoT(T d, NodoT<T>* s);
+    void muestraDato(void);
     void muestraDatos(void);
     void pideDatos(void);
     T dameDato(void);
@@ -30,6 +31,12 @@ template<typename T>
 NodoT<T>::NodoT(T d, NodoT<T>* s){
     dato = d;
     sig = s;
+}
+template<typename T>
+void NodoT<T>::muestraDato(void){
+    cout << "|" << dato << "|";
+    if(sig != NULL)
+        cout<< " -> ";
 }
 template<typename T>
 void NodoT<T>::muestraDatos(void){
