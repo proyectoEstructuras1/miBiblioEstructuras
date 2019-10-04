@@ -19,6 +19,7 @@ public:
     int eliminaUltimo(void);
     bool buscaNodo(int d);
     void muestraLista(void);
+    void muestraListaInvertida(void);
     int dameDatoIni(void);
     int dameDatoFin(void);
     bool invierteNodos(int n1, int n2);

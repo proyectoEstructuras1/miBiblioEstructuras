@@ -226,4 +226,20 @@ void Lista::fusiona(Lista& A, Lista& B){
         aux = aux->dameSig();
     }
 }
+void Lista::muestraListaInvertida(void){
+    if(!estaVacia()){
+        Nodo* a1=ini;
+        Nodo* a2=NULL;//El apuntador al que se busca, inicialmente el ultimo, tiene NULL
+        while(a2!=ini){
+            while(a1->dameSig() != a2){//Se busca al nodo cuyo sig sea a2
+                a1 = a1->dameSig();
+            }
+            cout << "|" << a1->dameDato() << "|";
+            if(a1!=ini)
+                cout<< " -> ";
+            a2=a1;//a2 se vuelve el "ultimo", con cada vuelta, al que se tiene que buscar.
+            a1=ini;//Siempre se busca desde el nodo inicial.
+        }
+    }
+}
 
