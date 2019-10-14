@@ -2,19 +2,25 @@
 #define NODOD_H
 
 #include <iostream>
-#include "Nodo.h"
 using namespace std;
 
-class NodoD : public Nodo{
+class NodoD{
 private:
     NodoD* pre;
+    int dato;
+    NodoD* sig;
 public:
     NodoD(void);
-    NodoD(NodoD* p, int d, Nodo* s);
+    NodoD(NodoD* p, int d, NodoD* s);
+    void pideDatos(void);
     void muestraDato(void);
     void muestraDatos(void);
     NodoD* damePre(void);
     void modificaPre(NodoD* p);
+    int dameDato(void);
+    void modificaDato(int d);
+    NodoD* dameSig(void);
+    void modificaSig(NodoD* s);
 };
 
 #endif // NODOD_H

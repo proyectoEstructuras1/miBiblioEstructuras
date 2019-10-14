@@ -1,10 +1,18 @@
 #include "NodoD.h"
 
-NodoD::NodoD(void): Nodo(){
+NodoD::NodoD(void){
     pre = NULL;
+    dato = 0;
+    sig = NULL;
 }
-NodoD::NodoD(NodoD* p, int d, Nodo* s):Nodo(d,s){
+NodoD::NodoD(NodoD* p, int d, NodoD* s){
     pre = p;
+    dato = d;
+    sig = s;
+}
+void NodoD::pideDatos(void){
+    cout<<"Dame mi dato: ";
+    cin>>dato;
 }
 void NodoD::muestraDato(void){
     if(pre != NULL)
@@ -32,4 +40,15 @@ NodoD* NodoD::damePre(void){
 void NodoD::modificaPre(NodoD* p){
     pre = p;
 }
-
+int NodoD::dameDato(void){
+    return dato;
+}
+void NodoD::modificaDato(int d){
+    dato = d;
+}
+NodoD* NodoD::dameSig(void){
+    return sig;
+}
+void NodoD::modificaSig(NodoD* s){
+    sig = s;
+}
