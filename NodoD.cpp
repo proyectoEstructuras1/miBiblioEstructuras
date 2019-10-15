@@ -17,8 +17,8 @@ void NodoD::pideDatos(void){
 void NodoD::muestraDato(void){
     if(pre != NULL)
         cout<<  " <- ";
-    cout << "|" << dameDato() <<"|";
-    if(dameSig() != NULL)
+    cout << "|" << dato <<"|";
+    if(sig != NULL)
         cout<< " -> ";
 }
 void NodoD::muestraDatos(void){
@@ -27,11 +27,11 @@ void NodoD::muestraDatos(void){
         cout<<"NULL";
     else
         cout<<pre;
-    cout<<  " <- |" << dameDato() <<"| -> ";
-    if(dameSig() == NULL)
+    cout<<  " <- |" << dato <<"| -> ";
+    if(sig == NULL)
         cout<<"NULL";
     else
-        cout<<dameSig();
+        cout<<sig;
     cout<<" ";
 }
 NodoD* NodoD::damePre(void){

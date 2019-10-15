@@ -11,6 +11,11 @@ private:
 public:
     ListaD(void);
     ~ListaD(void);
+    bool estaVacia(void);
+    void insertaNodo(int d);
+    void muestraIniFin(void);
+    void muestraFinIni(void);
+    void eliminaLista(void);
 };
 
 #endif // LISTAD_H
