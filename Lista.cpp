@@ -243,21 +243,23 @@ void Lista::muestraListaInvertida(void){
     }
 }
 void Lista::guardaLista(void){
-    ofstream HaciaArchivo("archivo.txt");
-    Nodo* aux=ini;
-    while(aux!=NULL){
-        HaciaArchivo<<aux->dameDato()<<endl;
-        aux =aux->dameSig();
+    ofstream HaciaArchvo("archivo.txt");
+    Nodo* aux = ini;
+    while(aux != NULL){
+        HaciaArchvo << aux->dameDato();
+        aux = aux->dameSig();
+        if(aux!=NULL)
+            HaciaArchvo << endl;
     }
-    HaciaArchivo.close();
+    HaciaArchvo.close();
 }
 void Lista::cargaLista(void){
-    ifstream DesdeArchivo("archivo.txt");
+    ifstream DesdeArchvo("archivo.txt");
     int d;
-    while(!DesdeArchivo.eof()){
-        DesdeArchivo >> d;
+    while(!DesdeArchvo.eof()){
+        DesdeArchvo >> d;
         insertaNodo(d);
     }
-    DesdeArchivo.close();
+    DesdeArchvo.close();
 }
 
