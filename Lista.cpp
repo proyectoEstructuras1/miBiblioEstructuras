@@ -242,4 +242,22 @@ void Lista::muestraListaInvertida(void){
         }
     }
 }
+void Lista::guardaLista(void){
+    ofstream HaciaArchivo("archivo.txt");
+    Nodo* aux=ini;
+    while(aux!=NULL){
+        HaciaArchivo<<aux->dameDato()<<endl;
+        aux =aux->dameSig();
+    }
+    HaciaArchivo.close();
+}
+void Lista::cargaLista(void){
+    ifstream DesdeArchivo("archivo.txt");
+    int d;
+    while(!DesdeArchivo.eof()){
+        DesdeArchivo >> d;
+        insertaNodo(d);
+    }
+    DesdeArchivo.close();
+}
 

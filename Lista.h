@@ -2,6 +2,7 @@
 #define LISTA_H
 
 #include <iostream>
+#include <fstream>
 #include <stdlib.h>
 #include "Nodo.h"
 using namespace std;
@@ -26,6 +27,8 @@ public:
     bool invierteAlPrimero(int n2);
     void copiaEnListaMayoresQue(Lista& Lcopia, int n);
     void fusiona(Lista& A, Lista& B);
+    void guardaLista(void);
+    void cargaLista(void);
 };
 
 #endif // LISTA_H
