@@ -53,3 +53,28 @@ bool Polinomio::eliminaTermino(float c, int e){
     Termino A(c,e);
     return eliminaTermino(A);
 }
+void Polinomio::guardaPolinomio(void){
+    ofstream HaciaArchivo("polinomio.txt");
+    NodoP* aux=ini;
+    while(aux != NULL){
+        HaciaArchivo
+                << aux->dameDato().dameCoeficiente() << ","
+                << aux->dameDato().dameExponente();
+        aux = aux->dameSig();
+        if(aux != NULL)
+            HaciaArchivo << endl;
+    }
+    HaciaArchivo.close();
+}
+void Polinomio::cargaPolinomio(void){
+    ifstream DesdeArchivo("polinomio.txt");
+    float c;
+    int e;
+    char coma;
+    while(!DesdeArchivo.eof()){
+        DesdeArchivo >> c  >> coma >> e;
+        insertaTermino(c,e);
+    }
+    DesdeArchivo.close();
+}
+

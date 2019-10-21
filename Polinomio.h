@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include <fstream>
 #include "NodoP.h"
 using namespace std;
 class Polinomio{
@@ -18,6 +19,8 @@ public:
     void insertaTermino(float c, int e);
     bool eliminaTermino(Termino A);
     bool eliminaTermino(float c, int e);
+    void guardaPolinomio(void);
+    void cargaPolinomio(void);
 };
 
 #endif // POLINOMIO_H
