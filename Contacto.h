@@ -2,6 +2,8 @@
 #define CONTACTO_H
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 using namespace std;
 class Contacto{
@@ -25,5 +27,7 @@ istream& operator>>(istream& teclado, Contacto& X);
 ostream& operator<<(ostream& monitor, Contacto X);
 bool operator==(Contacto Izquierdo, Contacto Derecho);
 bool operator!=(Contacto Izquierdo, Contacto Derecho);
+ofstream& operator<<(ofstream& HaciaArchivo, Contacto Derecho);
+ifstream& operator>>(ifstream& DesdeArchivo, Contacto& Derecho);
 
 #endif // CONTACTO_H

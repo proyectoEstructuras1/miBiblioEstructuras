@@ -64,5 +64,23 @@ bool operator!=(Contacto Izquierdo, Contacto Derecho){
             Izquierdo.dameTelefono() != Derecho.dameTelefono()
     ;
 }
+ofstream& operator<<(ofstream& HaciaArchivo, Contacto Derecho){
+    HaciaArchivo<<Derecho.dameNombre()<<","
+                <<Derecho.dameEMail()<<","
+                <<Derecho.dameTelefono();
+    return HaciaArchivo;
+}
+ifstream& operator>>(ifstream& DesdeArchivo, Contacto& Derecho){
+    string datos,atributo;
+    getline(DesdeArchivo,datos);
+    stringstream ss(datos);
+    getline(ss,atributo,',');
+    Derecho.modificaNombre(atributo);
+    getline(ss,atributo,',');
+    Derecho.modificaEMail(atributo);
+    getline(ss,atributo);
+    Derecho.modificaTelefono(atributo);
+    return DesdeArchivo;
+}
 
 

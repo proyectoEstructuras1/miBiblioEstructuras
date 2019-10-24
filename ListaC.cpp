@@ -38,4 +38,24 @@ void ListaC::muestraListaC(void){
         aux = aux->dameSig();
     }
 }
+void ListaC::guardaLista(void){
+    ofstream HaciaArchivo("archivo.txt");
+    NodoC* aux=ini;
+    while(aux!=NULL){
+        HaciaArchivo << aux->dameDato();
+        aux = aux->dameSig();
+        if(aux!=NULL)
+            HaciaArchivo<<endl;
+    }
+    HaciaArchivo.close();
+}
+void ListaC::cargaLista(void){
+    ifstream DesdeArchivo("archivo.txt");
+    Contacto X;
+    while(!DesdeArchivo.eof()){
+        DesdeArchivo >> X;
+        insertaNodo(X);
+    }
+    DesdeArchivo.close();
+}
 

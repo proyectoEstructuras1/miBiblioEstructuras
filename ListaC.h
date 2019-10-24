@@ -2,6 +2,7 @@
 #define LISTAC_H
 
 #include <iostream>
+#include <fstream>
 #include <stdlib.h>
 #include "NodoC.h"
 using namespace std;
@@ -16,6 +17,8 @@ public:
     bool buscaNodo(Contacto d);
     void eliminaListaC(void);
     void muestraListaC(void);
+    void guardaLista(void);
+    void cargaLista(void);
 };
 
 #endif // LISTAC_H
