@@ -2,6 +2,8 @@
 #define LIBRO_H
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 using namespace std;
 class Libro{
@@ -25,5 +27,7 @@ istream& operator>>(istream& teclado, Libro& X);
 ostream& operator<<(ostream& monitor, Libro X);
 bool operator==(Libro Izquierdo, Libro Derecho);
 bool operator!=(Libro Izquierdo, Libro Derecho);
+ofstream& operator<<(ofstream& HaciaArchivo, Libro Derecho);
+ifstream& operator>>(ifstream& DesdeArchivo, Libro& Derecho);
 
 #endif // LIBRO_H

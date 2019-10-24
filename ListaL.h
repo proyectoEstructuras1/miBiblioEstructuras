@@ -2,6 +2,7 @@
 #define LISTAL_H
 
 #include <iostream>
+#include <fstream>
 #include <stdlib.h>
 #include "NodoL.h"
 using namespace std;
@@ -16,6 +17,8 @@ public:
     bool buscaNodo(Libro d);
     void eliminaListaL(void);
     void muestraListaL(void);
+    void guardaLista(void);
+    void cargaLista(void);
 };
 
 #endif // LISTAL_H

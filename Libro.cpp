@@ -64,4 +64,22 @@ bool operator!=(Libro Izquierdo, Libro Derecho){
             Izquierdo.dameEditorial() != Derecho.dameEditorial()
     ;
 }
+ofstream& operator<<(ofstream& HaciaArchivo, Libro Derecho){
+    HaciaArchivo<<Derecho.dameAutor()<<","
+                <<Derecho.dameTitulo()<<","
+                <<Derecho.dameEditorial();
+    return HaciaArchivo;
+}
+ifstream& operator>>(ifstream& DesdeArchivo, Libro& Derecho){
+    string datos,atributo;
+    getline(DesdeArchivo,datos);
+    stringstream ss(datos);
+    getline(ss,atributo,',');
+    Derecho.modificaAutor(atributo);
+    getline(ss,atributo,',');
+    Derecho.modificaTitulo(atributo);
+    getline(ss,atributo);
+    Derecho.modificaEditorial(atributo);
+    return DesdeArchivo;
+}
 
