@@ -8,13 +8,14 @@ class ListaD{
 private:
     NodoD* ini;
     NodoD* fin;
+    NodoD* buscaNodo(int d);
 public:
     ListaD(void);
     ~ListaD(void);
     bool estaVacia(void);
     void insertaNodo(int d);
     bool eliminaNodo(int d);
-    NodoD* buscaNodo(int d);
+    bool buscaNodo(void);
     void muestraIniFin(void);
     void muestraFinIni(void);
     void eliminaLista(void);

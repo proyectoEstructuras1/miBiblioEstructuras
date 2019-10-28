@@ -86,6 +86,11 @@ void ListaD::eliminaLista(void){
         fin=ini;
     }
 }
+bool ListaD::buscaNodo(void){
+    int d;
+    cout<<"Nodo a buscar? ";cin>>d;
+    return buscaNodo(d) != NULL;
+}
 NodoD* ListaD::buscaNodo(int d){
     if(estaVacia())
         return NULL;
@@ -129,7 +134,12 @@ bool ListaD::eliminaNodo(int d){
         delete a2;
     }
     else{
-
+        NodoD* a1 = a2->damePre();
+        NodoD* a3 = a2->dameSig();
+        a1->modificaSig(a3);
+        a3->modificaPre(a1);
+        delete a2;
     }
     return true;
 }
+
