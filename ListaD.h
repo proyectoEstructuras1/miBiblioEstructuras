@@ -13,6 +13,8 @@ public:
     ~ListaD(void);
     bool estaVacia(void);
     void insertaNodo(int d);
+    bool eliminaNodo(int d);
+    NodoD* buscaNodo(int d);
     void muestraIniFin(void);
     void muestraFinIni(void);
     void eliminaLista(void);
