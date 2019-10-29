@@ -41,11 +41,11 @@ void ListaD::insertaNodo(int d){
         ini = new NodoD(NULL,d,NULL);
         fin = ini;
     }
-    else if(d < ini->dameDato()){
+    else if(d <= ini->dameDato()){
         ini->modificaPre(new NodoD(NULL,d,ini));
         ini = ini->damePre();
     }
-    else if(d > fin->dameDato()){
+    else if(d >= fin->dameDato()){
         fin->modificaSig(new NodoD(fin,d,NULL));
         fin = fin->dameSig();
     }
