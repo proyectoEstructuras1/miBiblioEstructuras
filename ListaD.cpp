@@ -50,6 +50,41 @@ void ListaD::insertaNodo(int d){
         fin = fin->dameSig();
     }
     else{
+        NodoD* a1=ini;
+        NodoD* a2=fin;
+        while(
+            a1!=a2 &&
+            a1->dameSig()!=a2 &&
+            d > a1->dameDato() &&
+            d < a2->dameDato()
+        ){
+            a1=a1->dameSig();
+            a2=a2->damePre();
+        }
+
+        if( a1==a2 && d<=a1->dameDato() ){
+            cout<<"a1==a2 && d<=a1->dameDato()"<<endl
+                <<"Insertaria al " << d << endl;
+        }
+        else if( a1==a2 && d>a1->dameDato() ){
+            cout<<"a1==a2 && d>a1->dameDato()"<<endl
+                <<"Insertaria al " << d << endl;
+        }
+        else if(a1->dameSig()==a2 &&
+                d >= a1->dameDato() &&
+                d <= a2->dameDato()
+        ){
+            cout<<"a1->dameSig()==a2 && d >= a1->dameDato() &&  <= a2->dameDato()"<<endl
+                <<"Insertaria al " << d << endl;
+        }
+        else if(d <= a1->dameDato()){
+            cout<<"d <= a1->dameDato()"<<endl
+                <<"Insertaria al " << d << endl;
+        }
+        else{
+            cout<<"else: d >= a2->dameDato()"<<endl
+                <<"Insertaria al " << d << endl;
+        }
 
     }
 }
