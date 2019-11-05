@@ -15,11 +15,7 @@ void NodoA::pideDatos(void){
     cin>>dato;
 }
 void NodoA::muestraDato(void){
-    if(izq != NULL)
-        cout<<  " <- ";
-    cout << "|" << dato <<"|";
-    if(der != NULL)
-        cout<< " -> ";
+    cout << " |" << dato <<"| ";
 }
 void NodoA::muestraDatos(void){
     cout<<" ";
