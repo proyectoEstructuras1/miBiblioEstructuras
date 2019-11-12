@@ -67,4 +67,24 @@ void Arbol::eliminaArbol(NodoA* r){
         delete r;
     }
 }
+bool Arbol::buscaNodo(int d){
+    if(raiz==NULL)
+        return false;
+    else if(d==raiz->dameDato())
+        return true;
+    else
+        return buscaNodo(raiz,d);
+}
+bool Arbol::buscaNodo(NodoA* r, int d){
+    if(d==r->dameDato())
+        return true;
+    else if(d<r->dameDato() && r->dameIzq()==NULL)
+        return false;
+    else if(d>r->dameDato() && r->dameDer()==NULL)
+        return false;
+    else if(d<r->dameDato())
+        return buscaNodo(r->dameIzq(),d);
+    else if(d>r->dameDato())
+        return buscaNodo(r->dameDer(),d);
+}
 

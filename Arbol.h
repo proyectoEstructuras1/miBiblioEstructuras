@@ -12,6 +12,7 @@ private:
     void muestraPos(NodoA* r);
     void insertaNodo(NodoA* r, int d);
     void eliminaArbol(NodoA* r);
+    bool buscaNodo(NodoA* r, int d);
 public:
     Arbol(void);
     ~Arbol(void);
@@ -20,6 +21,7 @@ public:
     void muestraPos(void);
     void insertaNodo(int d);
     void eliminaArbol(void);
+    bool buscaNodo(int d);
 };
 
 #endif // ARBOL_H
