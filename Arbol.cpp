@@ -87,4 +87,51 @@ bool Arbol::buscaNodo(NodoA* r, int d){
     else if(d>r->dameDato())
         return buscaNodo(r->dameDer(),d);
 }
-
+int Arbol::cuentaNodos(void){
+    if(raiz==NULL)
+        return 0;
+    else
+        return cuentaNodos(raiz);
+}
+int Arbol::cuentaNodos(NodoA* r){
+    if(r->dameIzq()==NULL &&
+       r->dameDer()==NULL){
+        return 1;
+    }
+    else if(r->dameIzq()!=NULL &&
+       r->dameDer()==NULL){
+        return 1 + cuentaNodos(r->dameIzq());
+    }
+    else if(r->dameIzq()==NULL &&
+       r->dameDer()!=NULL){
+        return 1 + cuentaNodos(r->dameDer());
+    }
+    else {
+        return 1 + cuentaNodos(r->dameIzq())
+                 + cuentaNodos(r->dameDer());
+    }
+}
+int Arbol::profundidadDelArbol(void){
+    int pP = -1;
+    if(raiz==NULL)
+        return pP;
+    else
+        return profundidadDelArbol(raiz,pP);
+}
+int Arbol::profundidadDelArbol(NodoA* r, int pP){
+    if(r->dameIzq()==NULL && r->dameDer()==NULL)
+        return pP + 1;
+    else if(r->dameIzq()!=NULL && r->dameDer()==NULL)
+        return profundidadDelArbol(r->dameIzq(),pP + 1);
+    else if(r->dameIzq()==NULL && r->dameDer()!=NULL)
+        return profundidadDelArbol(r->dameDer(),pP + 1);
+    else if(r->dameIzq()!=NULL && r->dameDer()!=NULL){
+        int pI,pD;
+        pI = profundidadDelArbol(r->dameIzq(),pP + 1);
+        pD = profundidadDelArbol(r->dameDer(),pP + 1);
+        if(pI>=pD)
+            return pI;
+        else
+            return pD;
+    }
+}

@@ -13,6 +13,8 @@ private:
     void insertaNodo(NodoA* r, int d);
     void eliminaArbol(NodoA* r);
     bool buscaNodo(NodoA* r, int d);
+    int cuentaNodos(NodoA* r);
+    int profundidadDelArbol(NodoA* r, int pP);
 public:
     Arbol(void);
     ~Arbol(void);
@@ -22,6 +24,8 @@ public:
     void insertaNodo(int d);
     void eliminaArbol(void);
     bool buscaNodo(int d);
+    int cuentaNodos(void);
+    int profundidadDelArbol(void);
 };
 
 #endif // ARBOL_H
