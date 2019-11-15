@@ -135,3 +135,33 @@ int Arbol::profundidadDelArbol(NodoA* r, int pP){
             return pD;
     }
 }
+bool Arbol::eliminaNodo(int d){
+    if(raiz==NULL)
+        return false;
+    else if(d==raiz->dameDato()){
+        eliminaArbol();
+        return true;
+    }
+    else
+        return eliminaNodo(NULL,raiz,d);
+}
+bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
+    if(d==r->dameDato()&&r==nP->dameIzq()){
+        eliminaArbol(r);
+        nP->modificaIzq(NULL);
+        return true;
+    }
+    else if(d==r->dameDato()&&r==nP->dameDer()){
+        eliminaArbol(r);
+        nP->modificaDer(NULL);
+        return true;
+    }
+    else if(d<r->dameDato()&&r->dameIzq()==NULL)
+        return false;
+    else if(d>r->dameDato()&&r->dameDer()==NULL)
+        return false;
+    else if(d<r->dameDato()&&r->dameIzq()!=NULL)
+        return eliminaNodo(r,r->dameIzq(),d);
+    else if(d>r->dameDato()&&r->dameDer()!=NULL)
+        return eliminaNodo(r,r->dameDer(),d);
+}
