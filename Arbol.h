@@ -15,7 +15,9 @@ private:
     bool buscaNodo(NodoA* r, int d);
     int cuentaNodos(NodoA* r);
     int profundidadDelArbol(NodoA* r, int pP);
+    bool eliminaSubarbol(NodoA* nP,NodoA* r,int d);
     bool eliminaNodo(NodoA* nP,NodoA* r,int d);
+    void traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui);
 public:
     Arbol(void);
     ~Arbol(void);
@@ -27,6 +29,7 @@ public:
     bool buscaNodo(int d);
     int cuentaNodos(void);
     int profundidadDelArbol(void);
+    bool eliminaSubarbol(int d);
     bool eliminaNodo(int d);
 };
 

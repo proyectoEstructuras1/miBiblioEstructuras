@@ -135,7 +135,7 @@ int Arbol::profundidadDelArbol(NodoA* r, int pP){
             return pD;
     }
 }
-bool Arbol::eliminaNodo(int d){
+bool Arbol::eliminaSubarbol(int d){
     if(raiz==NULL)
         return false;
     else if(d==raiz->dameDato()){
@@ -143,9 +143,9 @@ bool Arbol::eliminaNodo(int d){
         return true;
     }
     else
-        return eliminaNodo(NULL,raiz,d);
+        return eliminaSubarbol(NULL,raiz,d);
 }
-bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
+bool Arbol::eliminaSubarbol(NodoA* nP,NodoA* r,int d){
     if(d==r->dameDato()&&r==nP->dameIzq()){
         eliminaArbol(r);
         nP->modificaIzq(NULL);
@@ -161,7 +161,82 @@ bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
     else if(d>r->dameDato()&&r->dameDer()==NULL)
         return false;
     else if(d<r->dameDato()&&r->dameIzq()!=NULL)
-        return eliminaNodo(r,r->dameIzq(),d);
+        return eliminaSubarbol(r,r->dameIzq(),d);
     else if(d>r->dameDato()&&r->dameDer()!=NULL)
+        return eliminaSubarbol(r,r->dameDer(),d);
+}
+bool Arbol::eliminaNodo(int d){
+    NodoA* aux;
+    if(raiz==NULL){
+        cout<<"Arbol vacio"<<endl<<endl;
+        return false;
+    }
+    else
+        return eliminaNodo(NULL,raiz,d);
+}
+bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
+    if(d==r->dameDato() && r->dameIzq()==NULL && r->dameDer()==NULL){//Eres hoja
+        delete r;
+
+        if(nP==NULL)//Y eres la raiz
+            raiz=NULL;
+        else if(r==nP->dameIzq())//Y eres hijo izquierdo de nP
+            nP->modificaIzq(NULL);
+        else//Y eres hijo derecho de nP
+            nP->modificaDer(NULL);
+
+        return true;
+    }
+    else if(d==r->dameDato() && r->dameIzq()!=NULL && r->dameDer()==NULL){//Solo tienes hijo izquierdo
+
+        if(nP==NULL)//Y eres la raiz
+            raiz=r->dameIzq();
+        else if(r==nP->dameIzq())//Y eres hijo izquierdo de nP
+            nP->modificaIzq(r->dameIzq());
+        else//Y eres hijo derecho de nP
+            nP->modificaDer(r->dameIzq());
+
+        delete r;
+        return true;
+    }
+    else if(d==r->dameDato() && r->dameIzq()==NULL && r->dameDer()!=NULL){//Solo tienes hijo derecho
+
+        if(nP==NULL)//Y eres la raiz
+            raiz=r->dameDer();
+        else if(r==nP->dameIzq())//Y eres hijo izquierdo de nP
+            nP->modificaIzq(r->dameDer());
+        else//Y eres hijo derecho de nP
+            nP->modificaDer(r->dameDer());
+
+        delete r;
+        return true;
+    }
+    else if(d==r->dameDato() && r->dameIzq()!=NULL && r->dameDer()!=NULL){//Tienes 2 hijos
+        traeMenorNodo(r,r->dameDer(),r);
+        return true;
+    }
+    else if(d<r->dameDato() && r->dameIzq()==NULL){//Buscas un numero inexistente menor a r
+        return false;
+    }
+    else if(d>r->dameDato() && r->dameDer()==NULL){//Buscas un numero inexistente mayor a r
+        return false;
+    }
+    else if(d<r->dameDato() && r->dameIzq()!=NULL)//Ve a buscar d en la rama izquierda de r
+        return eliminaNodo(r,r->dameIzq(),d);
+    else if(d>r->dameDato() && r->dameDer()!=NULL)//Ve a buscar d en la rama derecha de r
         return eliminaNodo(r,r->dameDer(),d);
+}
+void Arbol::traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui){
+    if(r->dameIzq()==NULL && r==nP->dameIzq()){
+        aqui->modificaDato(r->dameDato());
+        nP->modificaIzq(NULL);
+        delete r;
+    }
+    else if(r->dameIzq()==NULL && r==nP->dameDer()){
+        aqui->modificaDato(r->dameDato());
+        nP->modificaDer(NULL);
+        delete r;
+    }
+    else
+        traeMenorNodo(r,r->dameIzq(),aqui);
 }
