@@ -227,16 +227,27 @@ bool Arbol::eliminaNodo(NodoA* nP,NodoA* r,int d){
         return eliminaNodo(r,r->dameDer(),d);
 }
 void Arbol::traeMenorNodo(NodoA* nP,NodoA* r,NodoA* aqui){
-    if(r->dameIzq()==NULL && r==nP->dameIzq()){
+    if(r->dameIzq()==NULL && r->dameDer()==NULL && r==nP->dameIzq()){
         aqui->modificaDato(r->dameDato());
         nP->modificaIzq(NULL);
         delete r;
     }
-    else if(r->dameIzq()==NULL && r==nP->dameDer()){
+    else if(r->dameIzq()==NULL && r->dameDer()==NULL && r==nP->dameDer()){
         aqui->modificaDato(r->dameDato());
         nP->modificaDer(NULL);
+        delete r;
+    }
+    else if(r->dameIzq()==NULL && r->dameDer()!=NULL && r==nP->dameIzq()){
+        aqui->modificaDato(r->dameDato());
+        nP->modificaIzq(r->dameDer());
+        delete r;
+    }
+    else if(r->dameIzq()==NULL && r->dameDer()!=NULL && r==nP->dameDer()){
+        aqui->modificaDato(r->dameDato());
+        nP->modificaDer(r->dameDer());
         delete r;
     }
     else
         traeMenorNodo(r,r->dameIzq(),aqui);
 }
+
